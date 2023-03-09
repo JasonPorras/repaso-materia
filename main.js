@@ -24,7 +24,6 @@ console.log(document.querySelectorAll('p'));
 //Sirve para cambiar los que tengan en el contenido de manera dinamica...
 //Ocupamos guardar el elemento para hacerle el cambio..
 //solo contenido..
-
 const titulo = document.querySelector('h1'); //Selecciona el elemento que desea cambiar...
 titulo.textContent = 'Yo soy Superman';
 
@@ -49,7 +48,6 @@ console.log (prueba);
 // ELIMINAR Y AGREGAR CLASES...
 
 //agregar clases...
-
 const partido = document.querySelector('.liga');
 partido.classList.add('heredia');
 console.log (partido);
@@ -59,3 +57,44 @@ console.log (partido);
 //const partido = document.querySelector('.liga');
 partido.classList.remove('heredia');
 //console.log (partido);
+
+//------------------------------------------------------------
+
+//INGRESAR ELEMENTOS al HTML Y CONTENIDO DESDE EL JS.
+
+//Esto seria para ingresar solo un elemento...
+//Creamos una constante con el valor del documento con el elemento que seleccionamos...
+//En este caso el ul por que es como el contenedor y vamos a ingresar un li...
+const listaDeCompras = document.querySelector('ul');
+
+//Hacemos una constante con el valor del document que nos permite crear el elemento que deseamos...
+const li = document.createElement('li')
+li.textContent = "Manzana"; // le ingresamos contenido al li...
+//En este punto el li creado se encuentra flotando en la pagina web,,,
+
+//Entonces para colocarla donde queremos vamos a utilizar lo siguiente...
+listaDeCompras.appendChild(li); //en listaDeCompras es la constante donde estamos guardando el contenedor 
+//Y le estamos indicando que a ese contenedor creale un hijo con la constante de li que fue el elemento que se creo....
+
+//Ahora vamos con trabajar con array para ingresar mas elementos y no repetir todo el codigo....
+
+//Creamos una constante con el valor del documento con el elemento que seleccionamos...
+//En este caso el ul por que es como el contenedor y vamos a ingresar un li...
+const listaCompras = document.querySelector('ol');
+
+//creamos una constante con la lista de productos que deseamos ingresar...
+const comida = ["Huevos","Leche","Carne","Verduras"];
+
+//for
+for (let i = 0; i < comida.length; i++){//el for es para recorrer cada posicion del array el irlas colocando en el ul...
+  const li = document.createElement('li')
+  li.textContent = comida[i];
+  listaCompras.appendChild(li); 
+}
+
+//forEach
+comida.forEach((item) => {
+  const li = document.createElement('li')
+  li.textContent = item;//va a escribar lo que recorra en el momento...
+  listaCompras.appendChild(li); 
+})
